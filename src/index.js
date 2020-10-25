@@ -27,9 +27,8 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 import Login from "./views/Login";
 import { AuthProvider } from "./Auth";
-import AdminLayout from "layouts/Admin.jsx";
+
 import Admin from "layouts/Admin.jsx";
-import PrivateRoute from "./PrivateRoute";
 
 ReactDOM.render(
   <AuthProvider>
