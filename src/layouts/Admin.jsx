@@ -92,7 +92,6 @@ class Admin extends Component {
     }
   };
   componentDidMount() {
-    console.log(this.state.curreUser);
     this.setState({ _notificationSystem: this.refs.notificationSystem });
     // // var _notificationSystem = this.refs.notificationSystem;
     // var color = Math.floor(Math.random() * 4 + 1);

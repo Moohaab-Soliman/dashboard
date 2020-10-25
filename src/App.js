@@ -13,6 +13,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <div>
+          <PrivateRoute exact path="/" component={Admin} />
           <Route
             path="/login"
             render={(props) => {
@@ -27,7 +28,6 @@ const App = () => {
           />
 
           <Route path="/admin/" render={(props) => <Admin {...props} />} />
-          <PrivateRoute exact path="/" component={Admin} />
         </div>
       </Router>
     </AuthProvider>

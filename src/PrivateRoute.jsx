@@ -6,16 +6,16 @@ import Admin from "./layouts/Admin";
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   console.log("I am hereeee");
-  const { currentUser } = useContext(AuthContext);
-
+  const currentUser = useContext(AuthContext);
+  {
+    console.log(currentUser);
+  }
   return !!currentUser ? (
     <>
       <Route path="/admin/" render={(props) => <Admin {...props} />} />
     </>
   ) : (
     <>
-      {console.log(currentUser)}
-
       <Redirect to={"/login"} />
     </>
   );
