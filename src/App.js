@@ -1,13 +1,12 @@
-import React, { useCallback, useContext } from "react";
+import React from "react";
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import Login from "./views/Login";
-import AdminLayout from "layouts/Admin.jsx";
-import { AuthProvider, AuthContext } from "./Auth";
+// import AdminLayout from "layouts/Admin.jsx";
+import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import Admin from "./layouts/Admin";
-import { fun } from "./deyw";
 
 const App = () => {
   return (

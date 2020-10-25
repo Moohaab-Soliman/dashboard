@@ -19,7 +19,7 @@ import Dashboard from "views/Dashboard.jsx";
 
 import TableList from "views/TableList.jsx";
 import Typography from "views/Typography.jsx";
-import SignIn from "views/SignIn";
+// import SignIn from "views/SignIn";
 
 const dashboardRoutes = [
   {

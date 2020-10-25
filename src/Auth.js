@@ -5,7 +5,6 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  var [bate5a, setCurrentBate5a] = useState(null);
 
   const [pending, setPending] = useState(true);
 
@@ -15,8 +14,8 @@ export const AuthProvider = ({ children }) => {
 
       setPending(false);
     });
-  }, [{ children }]);
-
+  }, []);
+  console.log(children);
   if (pending) {
     return <>Loading...</>;
   }

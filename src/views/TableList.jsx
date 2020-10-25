@@ -20,7 +20,6 @@ import { Grid, Row, Col, Table, Button } from "react-bootstrap";
 import firebase from "../Firebase";
 import Card from "components/Card/Card.jsx";
 import { thArray } from "variables/Variables.jsx";
-import Modall from "./Modall";
 
 class TableList extends Component {
   state = {

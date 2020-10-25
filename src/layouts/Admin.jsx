@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import NotificationSystem from "react-notification-system";
 
@@ -94,9 +94,9 @@ class Admin extends Component {
   componentDidMount() {
     console.log(this.state.curreUser);
     this.setState({ _notificationSystem: this.refs.notificationSystem });
-    var _notificationSystem = this.refs.notificationSystem;
-    var color = Math.floor(Math.random() * 4 + 1);
-    var level;
+    // // var _notificationSystem = this.refs.notificationSystem;
+    // var color = Math.floor(Math.random() * 4 + 1);
+    // var level;
   }
   componentDidUpdate(e) {
     if (

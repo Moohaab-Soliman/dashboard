@@ -16,25 +16,11 @@
 
 */
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
+
 import { Grid, Row, Col } from "react-bootstrap";
 import firebase from "../Firebase";
 
-import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
-import { Tasks } from "components/Tasks/Tasks.jsx";
-import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar,
-} from "variables/Variables.jsx";
 
 class Dashboard extends Component {
   state = {
@@ -53,10 +39,10 @@ class Dashboard extends Component {
       if (data.nOfTabs !== undefined) {
         num = num + data.nOfTabs;
       }
+      return num;
     });
 
     this.setState({ totalNumofTabs: num });
-    console.log("test", num);
   };
   handleUserData = () => {
     const db = firebase.firestore();

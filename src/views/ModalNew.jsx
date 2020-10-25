@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 import firebase from "../Firebase";
 
@@ -76,17 +76,15 @@ class ModalNew extends Component {
       .put(ourImg)
       .then((snapshot) => {
         snapshot.ref.getDownloadURL().then((url) => {
-          if (imageType == "colored") {
+          if (imageType === "colored") {
             this.setState({ imgColorLink: url });
-          } else if (imageType == "isMinimal") {
+          } else if (imageType === "isMinimal") {
             this.setState({ imgMinLink: url });
           }
         });
       });
   };
   render() {
-    const { prop } = this.props;
-
     return (
       <>
         <Button
