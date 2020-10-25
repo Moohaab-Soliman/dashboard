@@ -12,6 +12,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   }
   return !!currentUser ? (
     <>
+      <Redirect to="/admin/dashboard" />
       <Route path="/admin/" render={(props) => <Admin {...props} />} />
     </>
   ) : (
