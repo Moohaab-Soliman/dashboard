@@ -22,12 +22,12 @@ const App = () => {
               if (cond) {
                 return <Login />;
               } else {
-                return <Redirect from="/" to="/admin12/dashboard" />;
+                return <Redirect from="/" to="/admin/dashboard" />;
               }
             }}
           />
 
-          <Route path="/admin/" render={(props) => <Admin {...props} />} />
+          {/* <Route path="/admin/" render={(props) => <Admin {...props} />} /> */}
         </div>
       </Router>
     </AuthProvider>

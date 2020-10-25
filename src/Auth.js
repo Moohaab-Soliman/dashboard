@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
+    firebase.auth().signOut();
     firebase.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
 

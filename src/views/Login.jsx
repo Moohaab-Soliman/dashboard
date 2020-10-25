@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import firebase from "../Firebase";
 import { AuthContext } from "../Auth.js";
-
+import "./login.css";
 const Login = ({ history }) => {
   const handleLogin = useCallback(
     async (event) => {
@@ -29,6 +29,7 @@ const Login = ({ history }) => {
   return (
     <div>
       <h1>Log in</h1>
+
       <form onSubmit={handleLogin}>
         <label>
           Email
