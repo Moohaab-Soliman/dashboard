@@ -38,7 +38,6 @@ ReactDOM.render(
         <Route
           path="/login"
           render={(props) => {
-            // console.log(currentUser);
             var cond = true;
             if (cond) {
               return <Login />;
