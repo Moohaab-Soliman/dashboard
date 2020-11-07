@@ -3,6 +3,7 @@ import { withRouter, Redirect } from "react-router";
 import firebase from "../Firebase";
 import { AuthContext } from "../Auth.js";
 import "./login.css";
+
 const Login = ({ history }) => {
   const handleLogin = useCallback(
     async (event) => {
@@ -21,35 +22,62 @@ const Login = ({ history }) => {
   );
 
   const currentUser = useContext(AuthContext);
-
-  if (currentUser) {
+  const admin = currentUser
+    ? currentUser.providerData.filter((c) => c.email === "mohab@m.com")
+    : null;
+  if (admin) {
     return <Redirect to="/" />;
   }
 
   return (
     <div>
-      <h1>Log in</h1>
+      <center>
+        <h1></h1>
+      </center>
 
       <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            autoComplete="true"
-          />
-        </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="true"
-          />
-        </label>
-        <button type="submit">Log in</button>
+        <div className="container">
+          <label>Email</label>
+          <br />
+          <center>
+            <input
+              name="email"
+              type="textemail"
+              placeholder="Email"
+              autoComplete="true"
+              required
+            />
+          </center>
+          <br />
+          <label>Password</label>
+          <br />
+          <center>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="true"
+              required
+            />
+          </center>
+
+          <center>
+            <button
+              style={{
+                backgroundColor: "#4caf50",
+                width: "50%",
+                color: "Black",
+                padding: "15px",
+                margin: "10px 0px",
+                border: "none",
+                cursor: "pointer",
+              }}
+              type="submit"
+            >
+              Log in
+            </button>
+          </center>
+        </div>
       </form>
     </div>
   );

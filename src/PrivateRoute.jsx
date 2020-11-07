@@ -7,14 +7,20 @@ import Admin from "./layouts/Admin";
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   console.log("I am hereeee");
   const currentUser = useContext(AuthContext);
+  const admin = currentUser
+    ? currentUser.providerData.map((c) => c.email === "mohab@m.com")
+    : null;
   {
-    console.log(currentUser);
+    // console.log(currentUser.providerData.map((c) => c.email));
   }
+  // const getUserData = currentUser
+  //   ? currentUser.providerData.map((c) => c.email === "mohab@m.com")
+  //   : alert("that's not an admin account");
+
+  // console.log(currentUser.providerData.map((c) => c.email));
+
   return !!currentUser ? (
-    <>
-      <Redirect to="/admin/dashboard" />
-      <Route path="/admin/" render={(props) => <Admin {...props} />} />
-    </>
+    <Route path="/admin/" render={(props) => <Admin {...props} />} />
   ) : (
     <>
       <Redirect to={"/login"} />

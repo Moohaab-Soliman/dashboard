@@ -272,7 +272,8 @@ const thArray = [
   "Email",
   "Location",
   "Number of Tabs",
-  "Delete",
+  "Verification",
+  "Tools",
 ];
 
 //

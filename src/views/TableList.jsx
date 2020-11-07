@@ -17,7 +17,7 @@
 */
 import React, { Component } from "react";
 import { Grid, Row, Col, Table, Button } from "react-bootstrap";
-import firebase from "../Firebase";
+import firebase, { db } from "../Firebase";
 import Card from "components/Card/Card.jsx";
 import { thArray } from "variables/Variables.jsx";
 
@@ -42,6 +42,15 @@ class TableList extends Component {
 
           this.setState({ docData });
         });
+      });
+  };
+  handleVerifiy = (userId, verified) => {
+    firebase
+      .firestore()
+      .collection("profile")
+      .doc(userId)
+      .update({
+        isVerified: verified === true ? false : true,
       });
   };
 
@@ -69,6 +78,8 @@ class TableList extends Component {
 
   render() {
     const { docData, search } = this.state;
+    const verifiedIcon =
+      "https://firebasestorage.googleapis.com/v0/b/lasso-fc13c.appspot.com/o/images%2Fcheck.png?alt=media&token=2694b679-6c51-4a69-9382-8f99465c6044";
     const filterd =
       docData && search
         ? docData.filter((data) => data.username === search)
@@ -89,6 +100,7 @@ class TableList extends Component {
                       style={{
                         marginLeft: "1%",
                         width: " 200px",
+                        height: "40px",
                         marginRight: "3%",
                       }}
                       type="text"
@@ -106,9 +118,6 @@ class TableList extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {console.log(
-                          filterd.filter((c) => c.username === "abdul")
-                        )}
                         {filterd.map((prop, key) => {
                           return (
                             <tr key={key}>
@@ -117,6 +126,15 @@ class TableList extends Component {
                               <td>{prop.email}</td>
                               <td>{prop.location}</td>
                               <td>{prop.nOfTabs}</td>
+                              <td>
+                                {prop.isVerified === true ? (
+                                  <img
+                                    src={verifiedIcon}
+                                    width="20px"
+                                    height="20px"
+                                  />
+                                ) : null}
+                              </td>
                               <td>
                                 <Button
                                   onClick={() => this.handleDelete(prop.uid)}
@@ -131,6 +149,18 @@ class TableList extends Component {
                                 >
                                   View user
                                 </Button>
+                                <Button
+                                  onClick={() =>
+                                    this.handleVerifiy(
+                                      prop.uid,
+                                      prop.isVerified
+                                    )
+                                  }
+                                >
+                                  {prop.isVerified === true
+                                    ? "Unverify"
+                                    : "Verifiy"}
+                                </Button>
                               </td>
                             </tr>
                           );
@@ -141,38 +171,6 @@ class TableList extends Component {
                 }
               />
             </Col>
-
-            {/* <Col md={12}>
-              <Card
-                plain
-                title="Striped Table with Hover"
-                category="Here is a subtitle for this table"
-                ctTableFullWidth
-                ctTableResponsive
-                content={
-                  <Table hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                }
-              />
-            </Col> */}
           </Row>
         </Grid>
       </div>
