@@ -7,9 +7,9 @@ import Admin from "./layouts/Admin";
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   console.log("I am hereeee");
   const currentUser = useContext(AuthContext);
-  const admin = currentUser
-    ? currentUser.providerData.map((c) => c.email === "mohab@m.com")
-    : null;
+  // const admin = currentUser
+  //   ? currentUser.providerData.map((c) => c.email === "mohab@m.com")
+  //   : null;
   {
     // console.log(currentUser.providerData.map((c) => c.email));
   }

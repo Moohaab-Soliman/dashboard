@@ -22,10 +22,8 @@ const Login = ({ history }) => {
   );
 
   const currentUser = useContext(AuthContext);
-  const admin = currentUser
-    ? currentUser.providerData.filter((c) => c.email === "mohab@m.com")
-    : null;
-  if (admin) {
+
+  if (currentUser) {
     return <Redirect to="/" />;
   }
 
