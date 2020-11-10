@@ -45,13 +45,9 @@ class TableList extends Component {
       });
   };
   handleVerifiy = (userId, verified) => {
-    firebase
-      .firestore()
-      .collection("profile")
-      .doc(userId)
-      .update({
-        isVerified: verified === true ? false : true,
-      });
+    firebase.firestore().collection("profile").doc(userId).update({
+      isVerified: !verified,
+    });
   };
 
   handleDelete = (userId) => {

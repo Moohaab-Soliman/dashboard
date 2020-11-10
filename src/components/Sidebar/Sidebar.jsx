@@ -19,6 +19,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 // import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
+import firebase from "../../Firebase";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -37,6 +38,11 @@ class Sidebar extends Component {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
+
+  handleLogout = () => {
+    firebase.auth().signOut();
+    window.location.reload(false);
+  };
   render() {
     const sidebarBackground = {
       backgroundImage: "url(" + this.props.image + ")",
@@ -85,6 +91,20 @@ class Sidebar extends Component {
               return null;
             })}
           </ul>
+          <br />
+          <center>
+            <button
+              onClick={this.handleLogout}
+              style={{
+                width: "10em",
+                height: "3em",
+                backgroundColor: "grey",
+                fontWeight: "bold",
+              }}
+            >
+              LOGOUT
+            </button>
+          </center>
         </div>
       </div>
     );

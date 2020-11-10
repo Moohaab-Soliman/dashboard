@@ -13,7 +13,6 @@ const Login = ({ history }) => {
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/admin/dashboard");
       } catch (error) {
         alert(error);
       }
@@ -22,9 +21,12 @@ const Login = ({ history }) => {
   );
 
   const currentUser = useContext(AuthContext);
-
-  if (currentUser) {
-    return <Redirect to="/" />;
+  if (currentUser !== null) {
+    if (currentUser.email !== "mohab@m.com") {
+      history.push("/login");
+    } else {
+      history.push("/admin/dashboard");
+    }
   }
 
   return (
@@ -35,7 +37,7 @@ const Login = ({ history }) => {
 
       <form onSubmit={handleLogin}>
         <div className="container">
-          <label>Email</label>
+          <label style={{ color: "white" }}>Email</label>
           <br />
           <center>
             <input
@@ -47,7 +49,7 @@ const Login = ({ history }) => {
             />
           </center>
           <br />
-          <label>Password</label>
+          <label style={{ color: "white" }}>Password</label>
           <br />
           <center>
             <input
@@ -62,17 +64,18 @@ const Login = ({ history }) => {
           <center>
             <button
               style={{
-                backgroundColor: "#4caf50",
+                backgroundColor: "white",
                 width: "50%",
                 color: "Black",
                 padding: "15px",
                 margin: "10px 0px",
                 border: "none",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
               type="submit"
             >
-              Log in
+              LOGIN
             </button>
           </center>
         </div>
