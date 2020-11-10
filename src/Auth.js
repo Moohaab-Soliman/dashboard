@@ -13,15 +13,13 @@ export const AuthProvider = ({ children }) => {
     // firebase.auth().signOut();
 
     firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
       if (user !== null) {
-        if (user.email === "mohab@m.com") {
+        if (user.email === "team@lassoshare.com") {
           setCurrentUser(user);
-          // history.push("/admin/dashboard");
         } else {
           setCurrentUser(null);
-
           alert("that's not an Admin Acc!");
-          // return <Redirect to="/" />;
         }
       }
       setPending(false);

@@ -32,6 +32,6 @@ input[type="password"] {
 }
 .container {
   padding: 25px;
-  width: 30%;
+  width: 25em;
   background-color: black;
 }

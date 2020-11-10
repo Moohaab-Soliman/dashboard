@@ -22,7 +22,7 @@ const Login = ({ history }) => {
 
   const currentUser = useContext(AuthContext);
   if (currentUser !== null) {
-    if (currentUser.email !== "mohab@m.com") {
+    if (currentUser.email !== "team@lassoshare.com") {
       history.push("/login");
     } else {
       history.push("/admin/dashboard");

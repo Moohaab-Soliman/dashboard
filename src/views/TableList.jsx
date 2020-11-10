@@ -48,6 +48,7 @@ class TableList extends Component {
     firebase.firestore().collection("profile").doc(userId).update({
       isVerified: !verified,
     });
+    // this.setState({isVerified})
   };
 
   handleDelete = (userId) => {
