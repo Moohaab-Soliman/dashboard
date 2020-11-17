@@ -25,7 +25,7 @@ import ModalNew from "./ModalNew";
 class TableList extends Component {
   state = {
     docData: [],
-    name: "kspkspsspsp",
+    name: "",
     link: "",
     colored: "",
     isMinimal: "",
@@ -110,7 +110,14 @@ class TableList extends Component {
     console.log(prop.id);
 
     var myName = this.state.name === "" ? prop.name : this.state.name;
-    var myLink = this.state.link === "" ? prop.link : this.state.link;
+    var myLink =
+      this.state.link === ""
+        ? prop.link.includes("https") === false
+          ? "https://" + prop.link
+          : prop.link
+        : this.state.link.includes("https") === false
+        ? "https://" + this.state.link
+        : this.state.link;
     var myColImg =
       this.state.imgColorLink === "" ? prop.img : this.state.imgColorLink;
     var myMinImg =
